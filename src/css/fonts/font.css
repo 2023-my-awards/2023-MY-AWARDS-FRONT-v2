@@ -1,0 +1,27 @@
+@font-face {
+  font-family: "CinemaB";
+  src: url("./a시네마B.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CinemaL";
+  src: url("./a시네마L.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CinemaM";
+  src: url("./a시네마M.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Santokki";
+  src: url("./HSSantokki-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}

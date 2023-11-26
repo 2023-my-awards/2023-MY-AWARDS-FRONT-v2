@@ -1,0 +1,28 @@
+.intro {
+    background-image: url('/public/images/intro_bg.png');
+    background-size: cover; /* 배경 이미지를 화면에 맞게 늘리기 */
+    background-repeat: no-repeat;
+    background-position: center;
+    align-items: center;
+    height: 100vh; /* 화면 높이의 100%로 설정 */
+    margin: 0; /* body의 margin 제거 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#nameimage {
+  width:85%;
+  height:auto;
+  margin-top:60px;
+  margin-left:10%;
+}
+
+#button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background-color: none;
+}

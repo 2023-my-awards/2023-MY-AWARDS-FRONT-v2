@@ -1,0 +1,173 @@
+#posting_container {
+  background-color: #8a0b0b;
+  height: 100%;
+}
+
+#decoration {
+  position: absolute;
+  width: 100%;
+}
+
+@media (min-width: 450px) {
+  #decoration {
+    width: 450px;
+  }
+}
+
+#posting_box {
+  margin-top: 15px;
+  border-radius: 20px;
+  background-color: #f7cc44;
+  width: 85%;
+  margin-left: 30px;
+}
+
+#posting_title {
+  text-align: center;
+  padding-top: 10px;
+}
+
+#posting_hashtag {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+#post_hashtag_component {
+  display: inline-block;
+}
+
+#post_hashtag_span {
+  font-family: "CinemaL";
+  color: white;
+  -webkit-text-stroke: 0.015cm black;
+  display: inline;
+  margin-left: 10px;
+}
+
+#posting_form {
+  padding-bottom: 50px;
+}
+
+label {
+  font-family: "Santokki";
+  color: #8a0b0b;
+  margin-left: 15px;
+}
+
+#input_title {
+  border: none;
+  outline: none;
+  background-color: #f7cc44;
+  width: 65%;
+  margin-left: 5px;
+  font-family: "CinemaL";
+}
+
+input[type="text"]::placeholder {
+  font-family: "CinemaL";
+  color: #9b9ba4;
+}
+
+#label_textarea {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+#input_contents {
+  font-family: "CinemaL";
+  border: none;
+  outline: none;
+  background-color: #f7cc44;
+  margin-left: 60px;
+  margin-top: -19px;
+  display: inline-block;
+  width: 70%;
+  resize: none;
+  position: relative;
+}
+
+textarea::placeholder {
+  font-family: "CinemaL";
+  color: #9b9ba4;
+}
+
+#posting_congrats {
+  color: #ffffff;
+  font-family: "CinemaL";
+  text-align: center;
+  font-size: 30px;
+  margin-top: 70px;
+}
+
+#posting_btn {
+  width: 90%;
+  height: 61px;
+  margin-left: 5%;
+  margin-bottom: 40%;
+}
+
+#posting_tagbar {
+  display: block;
+  position: fixed;
+  bottom: -300px;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  background-color: #69320a;
+  border-top-right-radius: 50px;
+  border-top-left-radius: 50px;
+  transition: bottom 0.5s ease;
+}
+
+@media (min-width: 450px) {
+  #posting_tagbar {
+    max-width: 450px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    position: absolute;
+  }
+}
+
+#posting_tagbar.visible {
+  bottom: 0;
+}
+
+#posting_tagbar.hidden {
+  bottom: -300px;
+}
+
+/* CustomFileInputButton  */
+#inputfileimg {
+  width: 19px;
+  height: 19px;
+  margin-bottom: -5px;
+}
+
+#filelabel {
+  margin-right: 10px;
+}
+
+#selected_container {
+  display: flex;
+}
+
+#selected_div {
+  width: 40%;
+  margin: 30px 15px 15px 15px;
+  display: inline-block;
+}
+
+#selected_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#photonotice {
+  font-family: "CinemaL";
+  margin-left:15%;
+}
