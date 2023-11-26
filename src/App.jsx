@@ -27,7 +27,7 @@ function App() {
   }, []);
   return (
     <Routes>
-      <Route path="/intro" element={<Intro />}></Route>
+      <Route path="/" element={<Intro />}></Route>
       <Route path="/mainpage" element={<MainPage />}></Route>
       <Route path="/posting" element={<Posting />}></Route>
       <Route path="/setprofile" element={<SetProfile />}></Route>
