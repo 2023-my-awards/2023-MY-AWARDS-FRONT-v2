@@ -2,7 +2,6 @@ import React from "react";
 import "../css/Intro.css";
 import styled from "styled-components";
 import KakaoLoginButton from "../components/KakaoLoginButton";
-import IntroIcon from "../../public/images/introname.png"
 
 const Appname = styled.div`
   font-family: "Santokki", sans-serif;
@@ -17,7 +16,7 @@ const Intro = () => {
   return (
     <div className="intro">
       <Appname>
-        <img id="nameimage" src={IntroIcon} alt="intro" />
+        <img id="nameimage" src="public/images/introname.png" alt="intro" />
       </Appname>
       <KakaoLoginButton id="button" />
     </div>
