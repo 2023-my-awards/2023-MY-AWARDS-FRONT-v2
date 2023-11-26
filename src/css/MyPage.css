@@ -1,0 +1,62 @@
+#mypage_box {
+  background-color: #8a0b0b;
+  height: 100%;
+  margin-top: -20px;
+}
+
+#mydetail_box {
+  background-color: #8a0b0b;
+  height: 100vh;
+  margin-top: -20px;
+}
+
+#awardlist_box {
+  height: 400px;
+}
+
+#mypage_header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: -10px;
+}
+
+#mypage_title {
+  display: flex;
+  margin-left: 30px;
+  margin-top: -10px;
+}
+
+#mp_title_txt {
+  font-family: "Santokki";
+  font-size: 24px;
+  color: #ffffff;
+  -webkit-text-stroke: 0.02cm black;
+}
+
+#trophy {
+  width: 26px;
+  height: 26px;
+  margin-top: 25px;
+  margin-left: 5px;
+}
+
+#scraplist_box {
+  height: 450px;
+}
+
+#mypage_profile {
+  margin-right: 40px;
+  margin-top: 5px;
+}
+
+#mylist_scrollbox {
+  overflow-x: scroll;
+  overflow-y: scroll;
+  max-height: 320px;
+}
+
+#scraplist_scrollbox {
+  overflow-x: scroll;
+  overflow-y: scroll;
+  max-height: 260px;
+}

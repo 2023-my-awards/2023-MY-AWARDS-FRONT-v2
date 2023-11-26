@@ -1,0 +1,83 @@
+#gamebox {
+  background-color: #8a0b0b;
+  height: 100%; /* 화면 높이의 100%로 설정 */
+  margin: 0; /* body의 margin 제거 */
+  align-items: auto;
+  justify-content: center; 
+  align-items: center;
+}
+
+#gametitle {
+  width:80%;
+  height:auto;
+  margin-left:7%;
+  margin-top:10px;
+}
+
+#start_contents {
+  font-family: "CinemaL", sans-serif;
+  font-size: 16px;
+  color: #f7cc44;
+  margin-left: 50px;
+  margin-top: 10px;
+}
+
+#middletitle {
+  font-family: "Santokki", sans-serif;
+  font-size: 28px;
+  color: #f7cc44;
+  text-align: center;
+  margin-top: 10px;
+  -webkit-text-stroke: 0.7px #000;
+}
+
+#start_mic {
+  width:60%;
+  height: auto; /* 높이를 가로의 15%로 고정 */
+  margin-left: 20%;
+}
+
+  
+#inputcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 10px auto; /* 가운데 정렬 및 위아래 여백 추가 */
+}
+
+/* 미디어 쿼리: 화면 너비가 415px 이하일 때 */
+@media (max-width: 400px) {
+  #gametitle {
+    width:80%;
+    margin-left:8%
+  }
+  
+  #inputcontainer {
+    width: 80%;
+    height:auto;
+  }
+
+  #Inputtext {
+    width:40%;
+    height:auto;
+  }
+
+  #start_mic {
+    width:45%;
+    margin-left:30%;
+  }
+
+  #start_contents {
+    font-size:13px;
+    margin-left:15%
+  }
+
+  #middletitle {
+    font-size:22px;
+    
+  }
+
+
+}
+
