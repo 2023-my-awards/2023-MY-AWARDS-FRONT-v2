@@ -46,7 +46,7 @@ const DeleteModal = ({ postId, closeModal }) => {
       };
 
       const response = await axios.delete(
-        `http://127.0.0.1:8000/api/board/${postId}`,
+        `https://2023-my-awards.com/api/board/${postId}`,
         config
       );
 

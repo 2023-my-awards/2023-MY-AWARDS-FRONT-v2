@@ -33,7 +33,7 @@ const PostProfile = () => {
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:8000/api/board/${this.post_id}`)
+      .get(`https://2023-my-awards.com/api/board/${this.post_id}`)
       .then((response) => {
         setPostInfo(response.data);
       })

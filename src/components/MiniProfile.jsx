@@ -58,7 +58,7 @@ const MiniProfile = () => {
             <ProfileImg
               src={
                 userInfo.profile_image
-                  ? "http://127.0.0.1:8000" + `${userInfo.profile_image}`
+                  ? "https://2023-my-awards.com" + `${userInfo.profile_image}`
                   : "/images/profile.png"
               }
               alt="프로필 사진"

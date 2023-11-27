@@ -65,7 +65,7 @@ const Posting = ({ tagnum }) => {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/api/hashtag", {
+      .get("https://2023-my-awards.com/api/hashtag", {
         headers: {
           "Content-Type": "application/json",
         },
@@ -219,7 +219,7 @@ const Posting = ({ tagnum }) => {
     if (title && contents) {
       try {
         const userResponse = await axios.get(
-          "http://127.0.0.1:8000/api/user/current_user",
+          "https://2023-my-awards.com/api/user/current_user",
           {
             withCredentials: true, // 쿠키 사용
           }

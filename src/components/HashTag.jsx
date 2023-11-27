@@ -35,7 +35,7 @@ const HashTag = ({ tagnum, onClick }) => {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/api/hashtag", {
+      .get("https://2023-my-awards.com/api/hashtag", {
         headers: {
           "Content-Type": "application/json",
         },
