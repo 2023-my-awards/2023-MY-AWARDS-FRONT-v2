@@ -26,7 +26,7 @@ const KakaoLoginButton = () => {
 
     const handleKakaoLogin = () => {
         // Kakao 로그인 페이지로 이동
-        window.location.href = "http://127.0.0.1:8000/api/kakao/login";
+        window.location.href = "https://2023-my-awards.com/api/kakao/login";
     };
 
 

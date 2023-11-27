@@ -60,7 +60,7 @@ const AwardDetail = ({ selectedPostId }) => {
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:8000/api/board/${selectedPostId}`)
+      .get(`https://2023-my-awards.com/api/board/${selectedPostId}`)
       .then((response) => {
         setPostInfo(response.data);
         setIsLiked(response.data.is_liked);
@@ -74,7 +74,7 @@ const AwardDetail = ({ selectedPostId }) => {
 
   const handleLikeClick = () => {
     axios
-      .post(`http://127.0.0.1:8000/api/board/${selectedPostId}/like`)
+      .post(`https://2023-my-awards.com/api/board/${selectedPostId}/like`)
       .then((response) => {
         setIsLiked(!isLiked);
       })
@@ -85,7 +85,7 @@ const AwardDetail = ({ selectedPostId }) => {
 
   const handleScrapClick = () => {
     axios
-      .post(`http://127.0.0.1:8000/api/board/${selectedPostId}/scrap`)
+      .post(`https://2023-my-awards.com/api/board/${selectedPostId}/scrap`)
       .then((response) => {
         setIsScrapped(!isScrapped);
       })
