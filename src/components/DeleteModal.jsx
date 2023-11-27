@@ -24,7 +24,7 @@ const ModalContent = styled.div`
 `;
 
 const ModalP = styled.p`
-font-family : "CinemaL"
+font-family : "CinemaL";
 font-size : 16px;
 `;
 
