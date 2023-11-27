@@ -16,7 +16,7 @@ const Intro = () => {
   return (
     <div className="intro">
       <Appname>
-        <img id="nameimage" src="public/images/introname.png" alt="intro" />
+        <img id="nameimage" src="images/introname.png" alt="intro" />
       </Appname>
       <KakaoLoginButton id="button" />
     </div>
