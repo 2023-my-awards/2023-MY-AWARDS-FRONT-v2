@@ -21,8 +21,10 @@ const PhotoButton = styled.button`
 const EditProfile = () => {
   const { state } = useLocation();
   const profile_image = state && state.profile_image;
+  const nickname = state && state.nickname;
+  const initailNickname = nickname ? nickname : '';
 
-  const [inputValue, setInputValue] = useState(''); // 입력된 값 상태
+  const [inputValue, setInputValue] = useState(initailNickname); // 입력된 값 상태
   const [isModalVisible, setIsModalVisible] = useState(false); // 모달 표시 여부 상태
   const [isSuccess, setIsSuccess] = useState(false); // 성공 여부 상태
   const [isProfileSelected, setIsProfileSelected] = useState(false);
