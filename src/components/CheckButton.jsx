@@ -8,22 +8,21 @@ const CheckButtonContainer = styled.div`
 `;
 
 const StyledButton = styled.button`
-  background-color: #8B4513;
+  background-color: #8b4513;
   border: 0.5px solid #000000;
-  width: 83px;
-  height: 33px;
+  padding: 7px 14px;
   font-size: 16px;
-  font-family: "CinemaL", sans-serif;
-  color: #FFFFFF;
+  font-family: 'CinemaL', sans-serif;
+  color: #ffffff;
   border-radius: 5px;
-  cursor: ${(props) => (props.isButtonEnabled ? 'pointer' : 'not-allowed')};
+  cursor: ${props => (props.isButtonEnabled ? 'pointer' : 'not-allowed')};
 `;
 
 const CheckButton = ({ isButtonEnabled, onClick, inputValue }) => {
   const handleCheck = async () => {
     try {
       // Axios를 사용하여 서버에 POST 요청 보내기
-      const response = await API.post("/api/user/check_nickname", {
+      const response = await API.post('/api/user/check_nickname', {
         nickname: inputValue, // 사용자가 입력한 닉네임을 전송
       });
 
