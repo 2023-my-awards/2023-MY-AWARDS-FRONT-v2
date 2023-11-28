@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import axios from "axios";
-import API from "../api/api";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import axios from 'axios';
+import API from '../api/api';
 
 const Nickname = styled.p`
-  font-family: "CinemaM";
+  font-family: 'CinemaM';
   color: #ffffff;
   font-size: 16px;
   display: inline-block;
@@ -44,7 +44,7 @@ const MiniProfile = () => {
         setUserInfo(response.data.user_info);
         setUserPostInfo(response.data.user_posts);
       } catch (error) {
-        console.error("사용자 정보를 가져오는 중 오류가 발생했습니다.", error);
+        console.error('사용자 정보를 가져오는 중 오류가 발생했습니다.', error);
       }
     };
     fetchUserInfo();
@@ -52,14 +52,19 @@ const MiniProfile = () => {
 
   return (
     <div>
-      <Link to="/editprofile">
+      <Link
+        to="/editprofile"
+        state={{
+          profile_image: userInfo.profile_image,
+        }}
+      >
         <MiniProfileDiv>
           <PIContainer>
             <ProfileImg
               src={
                 userInfo.profile_image
-                  ? "https://2023-my-awards.com" + `${userInfo.profile_image}`
-                  : "/images/profile.png"
+                  ? 'https://2023-my-awards.com' + `${userInfo.profile_image}`
+                  : '/images/profile.png'
               }
               alt="프로필 사진"
             />
