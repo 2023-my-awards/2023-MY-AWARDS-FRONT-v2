@@ -55,6 +55,7 @@ const MiniProfile = () => {
       <Link
         to="/editprofile"
         state={{
+          nickname: userInfo.nickname,
           profile_image: userInfo.profile_image,
         }}
       >
