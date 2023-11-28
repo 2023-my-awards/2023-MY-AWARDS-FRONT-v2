@@ -48,7 +48,7 @@
 
 #topic-box {
   width: 100%;
-  margin-top: 15px;
+
 }
 
 #topic_result {
@@ -71,7 +71,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-  margin-top: 25px;
+  margin-top: 10px;
 }
 
 #hashtag-text {
@@ -122,7 +122,7 @@
 
   #nameresult {
     font-size: 24px;
-    margin-top: 10%;
+    margin-top: 5%;
     margin-bottom: 0%;
   }
 }
