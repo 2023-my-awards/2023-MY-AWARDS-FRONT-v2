@@ -100,7 +100,7 @@ const AwardDetail = ({ selectedPostId }) => {
       .get(`https://2023-my-awards.com/api/board/${selectedPostId}`)
       .then(response => {
         setPostInfo(response.data);
-        setIsLiked(response.data.is_liked);
+        setIsLiked(getLikeStatus(selectedPostId));
         setIsScrapped(response.data.is_scrapped);
         console.log(response.data);
       })
@@ -109,15 +109,36 @@ const AwardDetail = ({ selectedPostId }) => {
       });
   }, [selectedPostId]);
 
-  const handleLikeClick = () => {
-    axios
-      .post(`https://2023-my-awards.com/api/board/${selectedPostId}/like`)
-      .then(response => {
-        setIsLiked(!isLiked);
-      })
-      .catch(error => {
-        console.error('좋아요 요청을 보내는 중 오류가 발생했습니다.', error);
-      });
+  const getLikeStatus = async postId => {
+    try {
+      const response = await axios.get(
+        `https://2023-my-awards.com/api/board/${postId}/like_status`,
+        {
+          withCredentials: true,
+        }
+      );
+
+      return response.data.is_liked;
+    } catch (error) {
+      console.error('좋아요 상태를 가져오는 중 오류 발생:', error);
+      return false; // 에러 발생 시 기본값으로 false를 반환
+    }
+  };
+
+
+  const handleLikeClick = async () => {
+    try {
+      await axios.post(`https://2023-my-awards.com/api/board/${selectedPostId}/like`);
+      // 좋아요 클릭 후 좋아요 상태를 다시 가져와서 업데이트
+      const updatedLikeStatus = await getLikeStatus(selectedPostId);
+      setIsLiked(updatedLikeStatus);
+
+      // 서버에서 좋아요 수를 가져와 postInfo 업데이트
+      const response = await axios.get(`https://2023-my-awards.com/api/board/${selectedPostId}`);
+      setPostInfo(response.data);
+    } catch (error) {
+      console.error('좋아요 요청을 보내거나 정보를 가져오는 중 오류 발생:', error);
+    }
   };
 
   const handleScrapClick = () => {
@@ -145,32 +166,32 @@ const AwardDetail = ({ selectedPostId }) => {
 
   console.log('postInfo', postInfo);
 
-  // useEffect(() => {
-  //   setPostInfo({
-  //     id: 69,
-  //     images: [
-  //       {
-  //         image:
-  //           'http://2023-my-awards.com/media/post/69/2023/11/29/image1.png',
-  //       },
-  //       {
-  //         image:
-  //           'http://2023-my-awards.com/media/post/69/2023/11/29/image2.png',
-  //       },
-  //     ],
-  //     nickname: '곰도링',
-  //     user: {
-  //       nickname: '곰도링',
-  //       profile_image: null,
-  //     },
-  //     title: '테스트용',
-  //     content: '테스트용',
-  //     created_at: '2023-11-29T16:34:34.502293',
-  //     like_count: 0,
-  //     category: 'best_dramas',
-  //     writer: 11,
-  //   });
-  // }, []);
+  useEffect(() => {
+    setPostInfo({
+      id: 69,
+      images: [
+        {
+          image:
+            'http://2023-my-awards.com/media/post/69/2023/11/29/image1.png',
+        },
+        {
+          image:
+            'http://2023-my-awards.com/media/post/69/2023/11/29/image2.png',
+        },
+      ],
+      nickname: '곰도링',
+      user: {
+        nickname: '곰도링',
+        profile_image: null,
+      },
+      title: '테스트용',
+      content: '테스트용',
+      created_at: '2023-11-29T16:34:34.502293',
+      like_count: 0,
+      category: 'best_dramas',
+      writer: 11,
+    });
+  }, []);
 
   return (
     <div id="detail_box">
