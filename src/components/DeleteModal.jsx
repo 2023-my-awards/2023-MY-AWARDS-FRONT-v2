@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import "../css/fonts/font.css";
 import axios from "axios";
@@ -36,6 +37,8 @@ const ModalBtnDiv = styled.div`
 `;
 
 const DeleteModal = ({ postId, closeModal }) => {
+  const navigate = useNavigate();
+
   const handleDelete = async () => {
     try {
       const config = {
@@ -52,7 +55,13 @@ const DeleteModal = ({ postId, closeModal }) => {
 
       console.log("삭제 완료:", response.data);
       closeModal();
-      window.location.reload();
+      if (window.location.href.includes("myscrap")) {
+          navigate('/mypage');
+      } else if (window.location.href.includes("myaward")) {
+        navigate('/mypage');
+      } else {
+        window.location.reload(); // Default behavior, reloads the page
+      }
     } catch (error) {
       console.error("삭제 중 오류:", error);
     }
