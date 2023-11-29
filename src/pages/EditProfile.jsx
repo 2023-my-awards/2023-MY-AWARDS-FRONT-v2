@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import API from '../api/api';
 import Logo from '../components/Logo';
 import '../css/SetProfile.css';
@@ -135,9 +135,19 @@ const EditProfile = () => {
     }
   };
 
+  // 뒤로가기 버튼
+  const navigate = useNavigate();
+
+  const onClickBackButton = () => {
+    navigate(-1);
+  };
+
   return (
     <div id="setprofile">
       <Logo />
+      <p id="back" onClick={onClickBackButton}>
+        &lt;- 마이 페이지로 돌아가기
+      </p>
       <p id="content">
         닉네임을 수정하시겠습니까?
         <img id="bell" src="images/bell.png" alt="bell" />

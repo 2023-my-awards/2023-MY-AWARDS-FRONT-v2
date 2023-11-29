@@ -5,7 +5,8 @@
   background-position: center;
   width: 100%;
   height: cover;
-  margin: 0; /* body의 margin 제거 */
+  margin: 0;
+  /* body의 margin 제거 */
 }
 
 #content {
@@ -13,9 +14,20 @@
   font-size: 24px;
   color: #ffffff;
   text-align: left;
-  margin-top: 30px;
+  margin-top: 20px;
   margin-left: 30px;
   -webkit-text-stroke: 0.6px #000;
+}
+
+#back {
+  font-family: "Santokki", sans-serif;
+  color: #F7CC44;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
+  -webkit-text-stroke: 0.015cm black;
+  margin-left: 30px;
+  cursor: pointer;
 }
 
 #bell {
@@ -57,8 +69,10 @@
 #photo {
   width: 27%;
   height: auto;
-  display: block; /* 인라인 요소를 블록 요소로 변경 (이미지는 기본적으로 인라인 요소) */
-  margin: 0 auto; /* 좌우 여백을 자동으로 설정하여 가운데 정렬 */
+  display: block;
+  /* 인라인 요소를 블록 요소로 변경 (이미지는 기본적으로 인라인 요소) */
+  margin: 0 auto;
+  /* 좌우 여백을 자동으로 설정하여 가운데 정렬 */
 }
 
 #paragragh {
