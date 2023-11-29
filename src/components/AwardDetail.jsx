@@ -4,6 +4,7 @@ import '../css/PostDetail.css';
 import axios from 'axios';
 import HashTag from '../components/HashTag';
 import DeleteModal from './DeleteModal';
+import API from '../api/api';
 
 const PostBox = styled.div`
   margin-top: 15px;
@@ -82,29 +83,6 @@ const HashTagP = styled.p`
 `;
 
 const AwardDetail = ({ selectedPostId }) => {
-  // const [postInfo, setPostInfo] = useState({
-  //   id: 69,
-  //   images: [
-  //     {
-  //       image: 'http://2023-my-awards.com/media/post/69/2023/11/29/image1.png',
-  //     },
-  //     {
-  //       image: 'http://2023-my-awards.com/media/post/69/2023/11/29/image2.png',
-  //     },
-  //   ],
-  //   nickname: '곰도링',
-  //   user: {
-  //     nickname: '곰도링',
-  //     profile_image: null,
-  //   },
-  //   title: '테스트용',
-  //   content: '테스트용',
-  //   created_at: '2023-11-29T16:34:34.502293',
-  //   like_count: 0,
-  //   category: 'best_dramas',
-  //   writer: 11,
-  // });
-
   const [postInfo, setPostInfo] = useState({});
   const [isLiked, setIsLiked] = useState(false);
   const [isScrapped, setIsScrapped] = useState(false);
@@ -153,7 +131,46 @@ const AwardDetail = ({ selectedPostId }) => {
       });
   };
 
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      try {
+        const response = await API.get(`/api/mypage`);
+        setUserInfo(response.data.user_info);
+      } catch (error) {
+        console.error('사용자 정보를 가져오는 중 오류가 발생했습니다.', error);
+      }
+    };
+    fetchUserInfo();
+  }, []);
+
   console.log('postInfo', postInfo);
+
+  // useEffect(() => {
+  //   setPostInfo({
+  //     id: 69,
+  //     images: [
+  //       {
+  //         image:
+  //           'http://2023-my-awards.com/media/post/69/2023/11/29/image1.png',
+  //       },
+  //       {
+  //         image:
+  //           'http://2023-my-awards.com/media/post/69/2023/11/29/image2.png',
+  //       },
+  //     ],
+  //     nickname: '곰도링',
+  //     user: {
+  //       nickname: '곰도링',
+  //       profile_image: null,
+  //     },
+  //     title: '테스트용',
+  //     content: '테스트용',
+  //     created_at: '2023-11-29T16:34:34.502293',
+  //     like_count: 0,
+  //     category: 'best_dramas',
+  //     writer: 11,
+  //   });
+  // }, []);
 
   return (
     <div id="detail_box">
@@ -229,12 +246,15 @@ const AwardDetail = ({ selectedPostId }) => {
                   : null}
               </HashTagP>
             </HashTagDiv>
-
-            <img
-              id="detail_menuimg"
-              src={'/images/menubar.png'}
-              onClick={() => handleDeleteClick(postInfo.id)}
-            />
+            {postInfo.nickname === userInfo.nickname ? (
+              <img
+                id="detail_menuimg"
+                src={'./images/menubar.png'}
+                onClick={() => handleDeleteClick(postInfo.id)}
+              />
+            ) : (
+              <img id="detail_menuimg" style={{ display: 'none' }} />
+            )}
           </div>
 
           <div id="detail_contentbox">
@@ -261,11 +281,14 @@ const AwardDetail = ({ selectedPostId }) => {
           </div>
 
           <div id="detail_btnbox">
-            <LikeBtn
-              id="likebtn"
-              src={isLiked ? '/images/like_on.png' : '/images/like_off.png'}
-              onClick={handleLikeClick}
-            />
+            <div id="likebtn_div">
+              <LikeBtn
+                id="likebtn"
+                src={isLiked ? '/images/like_on.png' : '/images/like_off.png'}
+                onClick={handleLikeClick}
+              />
+              <span>{postInfo.like_count}</span>
+            </div>
             <ScrapBtn
               id="scrapbtn"
               src={
