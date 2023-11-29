@@ -166,32 +166,32 @@ const AwardDetail = ({ selectedPostId }) => {
 
   console.log('postInfo', postInfo);
 
-  useEffect(() => {
-    setPostInfo({
-      id: 69,
-      images: [
-        {
-          image:
-            'http://2023-my-awards.com/media/post/69/2023/11/29/image1.png',
-        },
-        {
-          image:
-            'http://2023-my-awards.com/media/post/69/2023/11/29/image2.png',
-        },
-      ],
-      nickname: '곰도링',
-      user: {
-        nickname: '곰도링',
-        profile_image: null,
-      },
-      title: '테스트용',
-      content: '테스트용',
-      created_at: '2023-11-29T16:34:34.502293',
-      like_count: 0,
-      category: 'best_dramas',
-      writer: 11,
-    });
-  }, []);
+  // useEffect(() => {
+  //   setPostInfo({
+  //     id: 69,
+  //     images: [
+  //       {
+  //         image:
+  //           'http://2023-my-awards.com/media/post/69/2023/11/29/image1.png',
+  //       },
+  //       {
+  //         image:
+  //           'http://2023-my-awards.com/media/post/69/2023/11/29/image2.png',
+  //       },
+  //     ],
+  //     nickname: '곰도링',
+  //     user: {
+  //       nickname: '곰도링',
+  //       profile_image: null,
+  //     },
+  //     title: '테스트용',
+  //     content: '테스트용',
+  //     created_at: '2023-11-29T16:34:34.502293',
+  //     like_count: 0,
+  //     category: 'best_dramas',
+  //     writer: 11,
+  //   });
+  // }, []);
 
   return (
     <div id="detail_box">
