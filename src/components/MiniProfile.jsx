@@ -65,7 +65,7 @@ const MiniProfile = () => {
               src={
                 userInfo.profile_image
                   ? 'https://2023-my-awards.com' + `${userInfo.profile_image}`
-                  : '/images/profile.png'
+                  : '/images/default.png'
               }
               alt="프로필 사진"
             />

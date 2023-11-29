@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import '../css/PostDetail.css';
-import axios from 'axios';
-import HashTag from '../components/HashTag';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import "../css/PostDetail.css";
+import axios from "axios";
+import HashTag from "../components/HashTag";
 
 const PostBox = styled.div`
   margin-top: 15px;
@@ -13,12 +13,12 @@ const PostBox = styled.div`
   margin: 0 auto;
   margin-bottom: 25px;
   padding: 10px 20px;
-  font-family: 'CinemaM';
+  font-family: "CinemaM";
 `;
 
 const Nickname = styled.p`
-  font-family: 'CinemaM';
-  color: '#000000';
+  font-family: "CinemaM";
+  color: "#000000";
   font-size: 16px;
   display: block;
   margin-left: 5px;
@@ -61,56 +61,50 @@ const AwardDetail = ({ selectedPostId }) => {
   useEffect(() => {
     axios
       .get(`https://2023-my-awards.com/api/board/${selectedPostId}`)
-      .then(response => {
-        // API 응답에서 데이터가 배열 형태인지 확인 후 설정
-        if (Array.isArray(response.data)) {
-          setPostInfo(response.data); // 배열 형태로 데이터 설정
-        } else {
-          setPostInfo([response.data]); // 데이터가 객체 형태일 경우 배열에 담아 설정
-        }
+      .then((response) => {
+        setPostInfo(response.data);
         setIsLiked(response.data.is_liked);
         setIsScrapped(response.data.is_scrapped);
         console.log(response.data);
       })
-      .catch(error => {
-        console.error('사용자 정보를 가져오는 중 오류가 발생했습니다.', error);
+      .catch((error) => {
+        console.error("사용자 정보를 가져오는 중 오류가 발생했습니다.", error);
       });
   }, [selectedPostId]);
 
   const handleLikeClick = () => {
     axios
       .post(`https://2023-my-awards.com/api/board/${selectedPostId}/like`)
-      .then(response => {
+      .then((response) => {
         setIsLiked(!isLiked);
       })
-      .catch(error => {
-        console.error('좋아요 요청을 보내는 중 오류가 발생했습니다.', error);
+      .catch((error) => {
+        console.error("좋아요 요청을 보내는 중 오류가 발생했습니다.", error);
       });
   };
 
   const handleScrapClick = () => {
     axios
       .post(`https://2023-my-awards.com/api/board/${selectedPostId}/scrap`)
-      .then(response => {
+      .then((response) => {
         setIsScrapped(!isScrapped);
       })
-      .catch(error => {
-        console.error('스크랩 요청을 보내는 중 오류가 발생했습니다.', error);
+      .catch((error) => {
+        console.error("스크랩 요청을 보내는 중 오류가 발생했습니다.", error);
       });
   };
   return (
     <div id="detail_box">
       {postInfo
-        .filter(post => post.id === selectedPostId)
-        .map(post => (
+        .filter((post) => post.id === selectedPostId)
+        .map((post) => (
           <PostBox key={post.id}>
             <PostProfileDiv>
               <PIContainer>
                 <ProfileImg
                   src={
-                    post.user.profile_image
-                      ? `${post.user.profile_image}`
-                      : '/images/profile.png'
+                    post.user.profile_image ? `${post.user.profile_image}`:
+                    "/images/default.png"
                   }
                   alt="프로필 사진"
                 />
@@ -123,7 +117,10 @@ const AwardDetail = ({ selectedPostId }) => {
 
             <div id="detail_hashtag_div">
               <HashTag tagnum={post.hashtag} />
-              <img id="detail_menuimg" src={'/images/menubar.png'} />
+              <img
+                id="detail_menuimg"
+                src={"/images/menubar.png"}
+              />
             </div>
 
             <div id="detail_contentbox">
@@ -138,13 +135,19 @@ const AwardDetail = ({ selectedPostId }) => {
             <div id="detail_btnbox">
               <LikeBtn
                 id="likebtn"
-                src={isLiked ? '/images/like_on.png' : '/images/like_off.png'}
+                src={
+                  isLiked
+                    ? "/images/like_on.png"
+                    : "/images/like_off.png"
+                }
                 onClick={handleLikeClick}
               />
               <ScrapBtn
                 id="scrapbtn"
                 src={
-                  isScrapped ? '/images/scrap_on.png' : '/images/scrap_off.png'
+                  isScrapped
+                    ? "/images/scrap_on.png"
+                    : "/images/scrap_off.png"
                 }
                 onClick={handleScrapClick}
               />

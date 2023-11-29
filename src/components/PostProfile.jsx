@@ -49,7 +49,7 @@ const PostProfile = () => {
           <ProfileImg
             src={
               post.user.profile_image ? `${post.user.profile_image}`:
-              "./images/profile.png"
+              "./images/default.png"
             }
             alt="프로필 사진"
           />
