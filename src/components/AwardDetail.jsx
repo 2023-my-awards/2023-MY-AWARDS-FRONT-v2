@@ -102,8 +102,8 @@ const AwardDetail = ({ selectedPostId }) => {
     const fetchLikeStatus = async () => {
       try {
         getLikeStatus(selectedPostId);
-    
-        console.log("status, status", status);
+        getScrapStatus(selectedPostId);
+
       } catch (error) {
         console.log('좋아요 상태를 가져오는 중 오류 발생:', error);
       }
@@ -128,6 +128,7 @@ const AwardDetail = ({ selectedPostId }) => {
       });
   }, []);
 
+  // 좋아요 여부
   const getLikeStatus = async postId => {
     try {
       const response = await axios.get(
@@ -137,9 +138,6 @@ const AwardDetail = ({ selectedPostId }) => {
         }
       );
 
-      console.log("response ", response);
-      console.log("response.data ", response.data);
-      console.log(" response.data.is_liked ",  response.data.is_liked);
       setIsLiked(response.data.is_liked)
 
     } catch (error) {
@@ -148,7 +146,25 @@ const AwardDetail = ({ selectedPostId }) => {
     }
   };
 
+  // 스크랩 여부 
+  const getScrapStatus = async postId => {
+    try {
+      const response = await axios.get(
+        `https://2023-my-awards.com/api/board/${postId}/scrap_status`,
+        {
+          withCredentials: true,
+        }
+      );
 
+      setIsScrapped(response.data.is_scrapped)
+
+    } catch (error) {
+      console.error('스크랩 상태를 가져오는 중 오류 발생:', error);
+      return false; // 에러 발생 시 기본값으로 false를 반환
+    }
+  };
+
+  // 좋아요 클릭
   const handleLikeClick = async () => {
     try {
       const response = await API.post(`/api/board/${selectedPostId}/like`, {
@@ -172,45 +188,20 @@ const AwardDetail = ({ selectedPostId }) => {
     }
   };
 
-//   const handleLikeClick = () => {
-//     setIsLiked(!isLiked);
-//     fetchLike();
-// }
-
-//   const fetchLike = async () => {
-//     try {
-//         if(!isLiked) {
-//           const response = await API.post(`/api/board/${selectedPostId}/like`, {
-//             user: userId,
-//             post: selectedPostId,
-//           });
-//           console.log('좋아요 요청이 성공했습니다.', response);
-
-//             setLikeCount(likeCount+1);
-//         } else {
-//         // 좋아요를 취소한 경우 (좋아요 추가 후 취소)
-//         const response = await API.post(`/api/board/${selectedPostId}/like`, {
-//           user: userId,
-//           post: selectedPostId,
-//         });
-//         console.log('좋아요 취소 요청이 성공했습니다.', response);
-//             setLikeCount(likeCount-1);
-//         }
-//     } catch (e) {
-//       console.error('좋아요 요청을 보내거나 정보를 가져오는 중 오류 발생:', error);
-//     }
-// }
-
-
-  const handleScrapClick = () => {
-    axios
-      .post(`https://2023-my-awards.com/api/board/${selectedPostId}/scrap`)
-      .then(response => {
-        setIsScrapped(!isScrapped);
-      })
-      .catch(error => {
-        console.log('스크랩 요청을 보내는 중 오류가 발생했습니다.', error);
+  // 스크랩 클릭
+  const handleScrapClick = async () => {
+    try {
+      const response = await API.post(`/api/board/${selectedPostId}/scrap`, {
+        user: userId,
+        post: selectedPostId,
       });
+
+      setIsScrapped(!isScrapped);
+      console.log(`Scrap status updated: ${isScrapped ? 'unScrap' : 'Scrap'}`, response);
+    } catch (error) {
+      console.log('Error while updating like status:', error);
+      // Handle errors accordingly (e.g., show a notification to the user)
+    }
   };
 
   useEffect(() => {
