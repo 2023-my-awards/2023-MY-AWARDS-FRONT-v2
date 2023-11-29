@@ -132,7 +132,7 @@ const AwardDetail = ({ selectedPostId }) => {
       // 좋아요 클릭 후 좋아요 상태를 다시 가져와서 업데이트
       const updatedLikeStatus = await getLikeStatus(selectedPostId);
       setIsLiked(updatedLikeStatus);
-
+      setIsLiked(getLikeStatus(selectedPostId));
       // 서버에서 좋아요 수를 가져와 postInfo 업데이트
       const response = await axios.get(`https://2023-my-awards.com/api/board/${selectedPostId}`);
       setPostInfo(response.data);
