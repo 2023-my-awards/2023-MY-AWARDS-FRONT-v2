@@ -89,6 +89,7 @@ const AwardDetail = ({ selectedPostId }) => {
   const [userInfo, setUserInfo] = useState([]);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteModalPostId, setDeleteModalPostId] = useState(null);
+  const [likeCount, setLikeCount] = useState(0) 
 
   const handleDeleteClick = postId => {
     setDeleteModalPostId(postId);
@@ -102,6 +103,7 @@ const AwardDetail = ({ selectedPostId }) => {
         setPostInfo(response.data);
         setIsLiked(getLikeStatus(selectedPostId));
         setIsScrapped(response.data.is_scrapped);
+        setLikeCount(response.data.like_count);
         console.log(response.data);
       })
       .catch(error => {
@@ -126,20 +128,35 @@ const AwardDetail = ({ selectedPostId }) => {
   };
 
 
-  const handleLikeClick = async () => {
+  const handleLikeClick = () => {
+    setIsLiked(!isLiked);
+    fetchLike();
+}
+
+  const fetchLike = async () => {
     try {
-      await axios.post(`https://2023-my-awards.com/api/board/${selectedPostId}/like`);
-      // 좋아요 클릭 후 좋아요 상태를 다시 가져와서 업데이트
-      const updatedLikeStatus = await getLikeStatus(selectedPostId);
-      setIsLiked(updatedLikeStatus);
-      setIsLiked(getLikeStatus(selectedPostId));
-      // 서버에서 좋아요 수를 가져와 postInfo 업데이트
-      const response = await axios.get(`https://2023-my-awards.com/api/board/${selectedPostId}`);
-      setPostInfo(response.data);
-    } catch (error) {
+        if(!isLiked) {
+          const response = await API.post(`/api/board/${selectedPostId}/like`, {
+            user: userId,
+            post: selectedPostId,
+          });
+          console.log('좋아요 요청이 성공했습니다.', response);
+
+            setLikeCount(likeCount+1);
+        } else {
+        // 좋아요를 취소한 경우 (좋아요 추가 후 취소)
+        const response = await API.post(`/api/board/${selectedPostId}/like`, {
+          user: userId,
+          post: selectedPostId,
+        });
+        console.log('좋아요 취소 요청이 성공했습니다.', response);
+            setLikeCount(likeCount-1);
+        }
+    } catch (e) {
       console.error('좋아요 요청을 보내거나 정보를 가져오는 중 오류 발생:', error);
     }
-  };
+}
+
 
   const handleScrapClick = () => {
     axios
