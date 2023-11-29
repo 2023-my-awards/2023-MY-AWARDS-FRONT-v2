@@ -101,8 +101,8 @@ const AwardDetail = ({ selectedPostId }) => {
     // 컴포넌트가 처음 렌더링될 때 호출될 함수
     const fetchLikeStatus = async () => {
       try {
-        const status = await getLikeStatus(selectedPostId);
-        setIsLiked(status);
+        getLikeStatus(selectedPostId);
+    
         console.log("status, status", status);
       } catch (error) {
         console.log('좋아요 상태를 가져오는 중 오류 발생:', error);
