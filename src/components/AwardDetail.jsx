@@ -86,6 +86,7 @@ const AwardDetail = ({ selectedPostId }) => {
   const [postInfo, setPostInfo] = useState({});
   const [isLiked, setIsLiked] = useState(false);
   const [isScrapped, setIsScrapped] = useState(false);
+  const [userId, setUserId] = useState(null);
   const [userInfo, setUserInfo] = useState([]);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteModalPostId, setDeleteModalPostId] = useState(null);
@@ -121,6 +122,9 @@ const AwardDetail = ({ selectedPostId }) => {
         }
       );
 
+      console.log("response ", response);
+      console.log("response.data ", response.data);
+      console.log(" response.data.is_liked ",  response.data.is_liked);
       return response.data.is_liked;
     } catch (error) {
       console.error('좋아요 상태를 가져오는 중 오류 발생:', error);
