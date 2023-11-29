@@ -103,6 +103,7 @@ const AwardDetail = ({ selectedPostId }) => {
       try {
         const status = await getLikeStatus(selectedPostId);
         setIsLiked(status);
+        console.log("status, status", status);
       } catch (error) {
         console.log('좋아요 상태를 가져오는 중 오류 발생:', error);
       }
@@ -129,6 +130,13 @@ const AwardDetail = ({ selectedPostId }) => {
 
   const getLikeStatus = async postId => {
     try {
+      const response = await axios.get(
+        `https://2023-my-awards.com/api/board/${postId}/like_status`,
+        {
+          withCredentials: true,
+        }
+      );
+
       console.log("response ", response);
       console.log("response.data ", response.data);
       console.log(" response.data.is_liked ",  response.data.is_liked);
