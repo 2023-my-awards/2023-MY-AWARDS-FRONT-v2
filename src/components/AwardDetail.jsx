@@ -105,7 +105,7 @@ const AwardDetail = ({ selectedPostId }) => {
   //   writer: 11,
   // });
 
-  const [postInfo, setPostInfo] = useState([]);
+  const [postInfo, setPostInfo] = useState({});
   const [isLiked, setIsLiked] = useState(false);
   const [isScrapped, setIsScrapped] = useState(false);
   const [userInfo, setUserInfo] = useState([]);
@@ -163,8 +163,8 @@ const AwardDetail = ({ selectedPostId }) => {
             <PIContainer>
               <ProfileImg
                 src={
-                  postInfo.user.profile_image !== null
-                    ? `${postInfo.user.profile_image}`
+                  postInfo.user && postInfo.user.profile_image
+                    ? postInfo.user.profile_image
                     : '/images/default.png'
                 }
                 alt="프로필 사진"
