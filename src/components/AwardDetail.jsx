@@ -98,16 +98,30 @@ const AwardDetail = ({ selectedPostId }) => {
   };
 
   useEffect(() => {
+    // 컴포넌트가 처음 렌더링될 때 호출될 함수
+    const fetchLikeStatus = async () => {
+      try {
+        const status = await getLikeStatus(selectedPostId);
+        setIsLiked(status);
+      } catch (error) {
+        console.log('좋아요 상태를 가져오는 중 오류 발생:', error);
+      }
+    };
+
+    fetchLikeStatus(); // getLikeStatus 호출
+  }, [selectedPostId]); // selectedPostId가 바뀔 때마다 호출
+
+
+  useEffect(() => {
     axios
       .get(`https://2023-my-awards.com/api/board/${selectedPostId}`)
       .then(response => {
         setPostInfo(response.data);
         // setIsScrapped(response.data.is_scrapped);
         setLikeCount(response.data.like_count);
-        getLikeStatus(selectedPostId);
-
 
       })
+
       .catch(error => {
         console.log('사용자 정보를 가져오는 중 오류가 발생했습니다.', error);
       });
@@ -115,8 +129,6 @@ const AwardDetail = ({ selectedPostId }) => {
 
   const getLikeStatus = async postId => {
     try {
-
-
       console.log("response ", response);
       console.log("response.data ", response.data);
       console.log(" response.data.is_liked ",  response.data.is_liked);
@@ -205,7 +217,7 @@ const AwardDetail = ({ selectedPostId }) => {
     fetchUserInfo();
   }, []);
 
-  console.log('postInfo', postInfo);
+
 
   // useEffect(() => {
   //   setPostInfo({
@@ -349,7 +361,7 @@ const AwardDetail = ({ selectedPostId }) => {
                 src={isLiked ? '/images/like_on.png' : '/images/like_off.png'}
                 onClick={handleLikeClick}
               />
-              <span>{postInfo.likeCount}</span>
+              <span>{likeCount}</span>
             </div>
             <ScrapBtn
               id="scrapbtn"
