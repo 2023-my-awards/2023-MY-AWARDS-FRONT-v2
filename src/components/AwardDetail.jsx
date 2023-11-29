@@ -249,7 +249,7 @@ const AwardDetail = ({ selectedPostId }) => {
             {postInfo.nickname === userInfo.nickname ? (
               <img
                 id="detail_menuimg"
-                src={'./images/menubar.png'}
+                src={'/images/menubar.png'}
                 onClick={() => handleDeleteClick(postInfo.id)}
               />
             ) : (
