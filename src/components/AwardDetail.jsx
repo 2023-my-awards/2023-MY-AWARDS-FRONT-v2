@@ -118,36 +118,6 @@ const AwardDetail = ({ selectedPostId }) => {
   };
 
   useEffect(() => {
-    // 아래 코드는 실제 API 호출이 아닌 로컬 데이터를 사용하여 초기화합니다.
-    // 만약 실제 API를 호출해야 한다면 axios.get(...)을 사용하여 호출하세요.
-    // 이 예시에서는 useState에 미리 설정된 값을 사용합니다.
-    setPostInfo({
-      id: 69,
-      images: [
-        {
-          image:
-            'http://2023-my-awards.com/media/post/69/2023/11/29/image1.png',
-        },
-        {
-          image:
-            'http://2023-my-awards.com/media/post/69/2023/11/29/image2.png',
-        },
-      ],
-      nickname: '곰도링',
-      user: {
-        nickname: '곰도링',
-        profile_image: null,
-      },
-      title: '테스트용',
-      content: '테스트용',
-      created_at: '2023-11-29T16:34:34.502293',
-      like_count: 0,
-      category: 'best_dramas',
-      writer: 11,
-    });
-  }, []);
-
-  useEffect(() => {
     axios
       .get(`https://2023-my-awards.com/api/board/${selectedPostId}`)
       .then(response => {
