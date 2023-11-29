@@ -111,7 +111,7 @@ const AwardDetail = ({ selectedPostId }) => {
       .catch(error => {
         console.log('사용자 정보를 가져오는 중 오류가 발생했습니다.', error);
       });
-  }, [selectedPostId]);
+  }, []);
 
   const getLikeStatus = async postId => {
     try {
@@ -135,6 +135,8 @@ const AwardDetail = ({ selectedPostId }) => {
         user: userId,
         post: selectedPostId,
       });
+
+      console.log("클릭! ", isLiked);
 
       if (!isLiked) {
         setLikeCount(likeCount + 1);
@@ -347,7 +349,7 @@ const AwardDetail = ({ selectedPostId }) => {
                 src={isLiked ? '/images/like_on.png' : '/images/like_off.png'}
                 onClick={handleLikeClick}
               />
-              <span>{postInfo.like_count}</span>
+              <span>{postInfo.likeCount}</span>
             </div>
             <ScrapBtn
               id="scrapbtn"
