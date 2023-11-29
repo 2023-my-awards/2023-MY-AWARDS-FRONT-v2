@@ -82,32 +82,28 @@ const HashTagP = styled.p`
 `;
 
 const AwardDetail = ({ selectedPostId }) => {
-  // const [postInfo, setPostInfo] = useState([
-  //   {
-  //     id: 69,
-  //     images: [
-  //       {
-  //         image:
-  //           'http://2023-my-awards.com/media/post/69/2023/11/29/image1.png',
-  //       },
-  //       {
-  //         image:
-  //           'http://2023-my-awards.com/media/post/69/2023/11/29/image2.png',
-  //       },
-  //     ],
-  //     nickname: '곰도링',
-  //     user: {
-  //       nickname: '곰도링',
-  //       profile_image: null,
+  // const [postInfo, setPostInfo] = useState({
+  //   id: 69,
+  //   images: [
+  //     {
+  //       image: 'http://2023-my-awards.com/media/post/69/2023/11/29/image1.png',
   //     },
-  //     title: '테스트용',
-  //     content: '테스트용',
-  //     created_at: '2023-11-29T16:34:34.502293',
-  //     like_count: 0,
-  //     category: 'best_dramas',
-  //     writer: 11,
+  //     {
+  //       image: 'http://2023-my-awards.com/media/post/69/2023/11/29/image2.png',
+  //     },
+  //   ],
+  //   nickname: '곰도링',
+  //   user: {
+  //     nickname: '곰도링',
+  //     profile_image: null,
   //   },
-  // ]);
+  //   title: '테스트용',
+  //   content: '테스트용',
+  //   created_at: '2023-11-29T16:34:34.502293',
+  //   like_count: 0,
+  //   category: 'best_dramas',
+  //   writer: 11,
+  // });
 
   const [postInfo, setPostInfo] = useState([]);
   const [isLiked, setIsLiked] = useState(false);
@@ -157,131 +153,128 @@ const AwardDetail = ({ selectedPostId }) => {
       });
   };
 
+  console.log('postInfo', postInfo);
+
   return (
     <div id="detail_box">
-      {Array.isArray(postInfo) && postInfo.length > 0 ? (
-        postInfo.map(post => (
-          <PostBox key={post.id}>
-            <PostProfileDiv>
-              <PIContainer>
-                <ProfileImg
-                  src={
-                    post.user.profile_image
-                      ? `${post.user.profile_image}`
-                      : '/images/default.png'
-                  }
-                  alt="프로필 사진"
-                />
-              </PIContainer>
-              <div id="detail_header">
-                <Nickname>{post.nickname}</Nickname>
-                <p id="detail_header_p">
-                  {post.created_at.split('T')[0].replace(/-/g, '.')}
-                </p>
-              </div>
-            </PostProfileDiv>
-
-            <div id="detail_hashtag_div">
-              <HashTagDiv>
-                <HashTagP>
-                  {post.category === 'best_all'
-                    ? '#all'
-                    : post.category === 'best_movies'
-                    ? '#올해의_영화'
-                    : post.category === 'best_dramas'
-                    ? '#올해의_드라마'
-                    : post.category === 'best_books'
-                    ? '#올해의_책'
-                    : post.category === 'best_music'
-                    ? '#올해의_음악'
-                    : post.category === 'best_moments'
-                    ? '#올해의_순간'
-                    : post.category === 'best_hobbies'
-                    ? '#올해의_취미'
-                    : post.category === 'best_discoveries'
-                    ? '#올해의_발견'
-                    : post.category === 'best_habits'
-                    ? '#올해의_습관'
-                    : post.category === 'best_sadness'
-                    ? '#올해의_우울'
-                    : post.category === 'best_thoughts'
-                    ? '#올해의_생각'
-                    : post.category === 'best_failures'
-                    ? '#올해의_실패'
-                    : post.category === 'best_regrets'
-                    ? '#올해의_후회'
-                    : post.category === 'best_humor'
-                    ? '#올해의_유머'
-                    : post.category === 'best_tears'
-                    ? '#올해의_눈물'
-                    : post.category === 'best_spending'
-                    ? '#올해의_소비'
-                    : post.category === 'best_emotions'
-                    ? '#올해의_감동'
-                    : post.category === 'best_travels'
-                    ? '#올해의_여행'
-                    : post.category === 'best_food'
-                    ? '#올해의_음식'
-                    : post.category === 'best_gifts'
-                    ? '#올해의_선물'
-                    : post.category === 'best_photos'
-                    ? '#올해의_사진'
-                    : post.category === 'next_year_me'
-                    ? '#내년의 나'
-                    : null}
-                </HashTagP>
-              </HashTagDiv>
-
-              <img
-                id="detail_menuimg"
-                src={'/images/menubar.png'}
-                onClick={() => handleDeleteClick(post.id)}
-              />
-            </div>
-
-            <div id="detail_contentbox">
-              <p id="detail_title">{post.title}</p>
-              <p id="detail_contents">{post.content}</p>
-              <div id="detail_imgcontainer">
-                {post.images && post.images.length > 0 && (
-                  <>
-                    <img
-                      id="detail_photo1"
-                      src={post.images[0].image}
-                      alt="첫번째 이미지"
-                    />
-                    {post.images.length > 1 && (
-                      <img
-                        id="detail_photo2"
-                        src={post.images[1].image}
-                        alt="두번째 이미지"
-                      />
-                    )}
-                  </>
-                )}
-              </div>
-            </div>
-
-            <div id="detail_btnbox">
-              <LikeBtn
-                id="likebtn"
-                src={isLiked ? '/images/like_on.png' : '/images/like_off.png'}
-                onClick={handleLikeClick}
-              />
-              <ScrapBtn
-                id="scrapbtn"
+      {postInfo && (
+        <PostBox key={postInfo.id}>
+          <PostProfileDiv>
+            <PIContainer>
+              <ProfileImg
                 src={
-                  isScrapped ? '/images/scrap_on.png' : '/images/scrap_off.png'
+                  postInfo.user.profile_image !== null
+                    ? `${postInfo.user.profile_image}`
+                    : '/images/default.png'
                 }
-                onClick={handleScrapClick}
+                alt="프로필 사진"
               />
+            </PIContainer>
+            <div id="detail_header">
+              <Nickname>{postInfo.nickname}</Nickname>
+              <p id="detail_header_p">
+                {postInfo.created_at.split('T')[0].replace(/-/g, '.')}
+              </p>
             </div>
-          </PostBox>
-        ))
-      ) : (
-        <></>
-      )}
+          </PostProfileDiv>
 
+          <div id="detail_hashtag_div">
+            <HashTagDiv>
+              <HashTagP>
+                {postInfo.category === 'best_all'
+                  ? '#all'
+                  : postInfo.category === 'best_movies'
+                  ? '#올해의_영화'
+                  : postInfo.category === 'best_dramas'
+                  ? '#올해의_드라마'
+                  : postInfo.category === 'best_books'
+                  ? '#올해의_책'
+                  : postInfo.category === 'best_music'
+                  ? '#올해의_음악'
+                  : postInfo.category === 'best_moments'
+                  ? '#올해의_순간'
+                  : postInfo.category === 'best_hobbies'
+                  ? '#올해의_취미'
+                  : postInfo.category === 'best_discoveries'
+                  ? '#올해의_발견'
+                  : postInfo.category === 'best_habits'
+                  ? '#올해의_습관'
+                  : postInfo.category === 'best_sadness'
+                  ? '#올해의_우울'
+                  : postInfo.category === 'best_thoughts'
+                  ? '#올해의_생각'
+                  : postInfo.category === 'best_failures'
+                  ? '#올해의_실패'
+                  : postInfo.category === 'best_regrets'
+                  ? '#올해의_후회'
+                  : postInfo.category === 'best_humor'
+                  ? '#올해의_유머'
+                  : postInfo.category === 'best_tears'
+                  ? '#올해의_눈물'
+                  : postInfo.category === 'best_spending'
+                  ? '#올해의_소비'
+                  : postInfo.category === 'best_emotions'
+                  ? '#올해의_감동'
+                  : postInfo.category === 'best_travels'
+                  ? '#올해의_여행'
+                  : postInfo.category === 'best_food'
+                  ? '#올해의_음식'
+                  : postInfo.category === 'best_gifts'
+                  ? '#올해의_선물'
+                  : postInfo.category === 'best_photos'
+                  ? '#올해의_사진'
+                  : postInfo.category === 'next_year_me'
+                  ? '#내년의 나'
+                  : null}
+              </HashTagP>
+            </HashTagDiv>
+
+            <img
+              id="detail_menuimg"
+              src={'/images/menubar.png'}
+              onClick={() => handleDeleteClick(postInfo.id)}
+            />
+          </div>
+
+          <div id="detail_contentbox">
+            <p id="detail_title">{postInfo.title}</p>
+            <p id="detail_contents">{postInfo.content}</p>
+            <div id="detail_imgcontainer">
+              {postInfo.images && postInfo.images.length > 0 && (
+                <>
+                  <img
+                    id="detail_photo1"
+                    src={postInfo.images[0].image}
+                    alt="첫번째 이미지"
+                  />
+                  {postInfo.images.length > 1 && (
+                    <img
+                      id="detail_photo2"
+                      src={postInfo.images[1].image}
+                      alt="두번째 이미지"
+                    />
+                  )}
+                </>
+              )}
+            </div>
+          </div>
+
+          <div id="detail_btnbox">
+            <LikeBtn
+              id="likebtn"
+              src={isLiked ? '/images/like_on.png' : '/images/like_off.png'}
+              onClick={handleLikeClick}
+            />
+            <ScrapBtn
+              id="scrapbtn"
+              src={
+                isScrapped ? '/images/scrap_on.png' : '/images/scrap_off.png'
+              }
+              onClick={handleScrapClick}
+            />
+          </div>
+        </PostBox>
+      )}
       {showDeleteModal && (
         <DeleteModal
           postId={deleteModalPostId}
