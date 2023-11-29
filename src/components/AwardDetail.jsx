@@ -101,13 +101,14 @@ const AwardDetail = ({ selectedPostId }) => {
       .get(`https://2023-my-awards.com/api/board/${selectedPostId}`)
       .then(response => {
         setPostInfo(response.data);
-        setIsLiked(getLikeStatus(selectedPostId));
-        setIsScrapped(response.data.is_scrapped);
+        // setIsScrapped(response.data.is_scrapped);
         setLikeCount(response.data.like_count);
+        setIsLiked(getLikeStatus(selectedPostId));
+        console.log(getLikeStatus(selectedPostId));
         console.log(response.data);
       })
       .catch(error => {
-        console.error('사용자 정보를 가져오는 중 오류가 발생했습니다.', error);
+        console.log('사용자 정보를 가져오는 중 오류가 발생했습니다.', error);
       });
   }, [selectedPostId]);
 
@@ -128,34 +129,55 @@ const AwardDetail = ({ selectedPostId }) => {
   };
 
 
-  const handleLikeClick = () => {
-    setIsLiked(!isLiked);
-    fetchLike();
-}
-
-  const fetchLike = async () => {
+  const handleLikeClick = async () => {
     try {
-        if(!isLiked) {
-          const response = await API.post(`/api/board/${selectedPostId}/like`, {
-            user: userId,
-            post: selectedPostId,
-          });
-          console.log('좋아요 요청이 성공했습니다.', response);
+      const response = await API.post(`/api/board/${selectedPostId}/like`, {
+        user: userId,
+        post: selectedPostId,
+      });
 
-            setLikeCount(likeCount+1);
-        } else {
-        // 좋아요를 취소한 경우 (좋아요 추가 후 취소)
-        const response = await API.post(`/api/board/${selectedPostId}/like`, {
-          user: userId,
-          post: selectedPostId,
-        });
-        console.log('좋아요 취소 요청이 성공했습니다.', response);
-            setLikeCount(likeCount-1);
-        }
-    } catch (e) {
-      console.error('좋아요 요청을 보내거나 정보를 가져오는 중 오류 발생:', error);
+      if (!isLiked) {
+        setLikeCount(likeCount + 1);
+      } else {
+        setLikeCount(likeCount - 1);
+      }
+
+      setIsLiked(!isLiked);
+      console.log(`Like status updated: ${isLiked ? 'unliked' : 'liked'}`, response);
+    } catch (error) {
+      console.log('Error while updating like status:', error);
+      // Handle errors accordingly (e.g., show a notification to the user)
     }
-}
+  };
+
+//   const handleLikeClick = () => {
+//     setIsLiked(!isLiked);
+//     fetchLike();
+// }
+
+//   const fetchLike = async () => {
+//     try {
+//         if(!isLiked) {
+//           const response = await API.post(`/api/board/${selectedPostId}/like`, {
+//             user: userId,
+//             post: selectedPostId,
+//           });
+//           console.log('좋아요 요청이 성공했습니다.', response);
+
+//             setLikeCount(likeCount+1);
+//         } else {
+//         // 좋아요를 취소한 경우 (좋아요 추가 후 취소)
+//         const response = await API.post(`/api/board/${selectedPostId}/like`, {
+//           user: userId,
+//           post: selectedPostId,
+//         });
+//         console.log('좋아요 취소 요청이 성공했습니다.', response);
+//             setLikeCount(likeCount-1);
+//         }
+//     } catch (e) {
+//       console.error('좋아요 요청을 보내거나 정보를 가져오는 중 오류 발생:', error);
+//     }
+// }
 
 
   const handleScrapClick = () => {
@@ -165,7 +187,7 @@ const AwardDetail = ({ selectedPostId }) => {
         setIsScrapped(!isScrapped);
       })
       .catch(error => {
-        console.error('스크랩 요청을 보내는 중 오류가 발생했습니다.', error);
+        console.log('스크랩 요청을 보내는 중 오류가 발생했습니다.', error);
       });
   };
 
@@ -175,7 +197,7 @@ const AwardDetail = ({ selectedPostId }) => {
         const response = await API.get(`/api/mypage`);
         setUserInfo(response.data.user_info);
       } catch (error) {
-        console.error('사용자 정보를 가져오는 중 오류가 발생했습니다.', error);
+        console.log('사용자 정보를 가져오는 중 오류가 발생했습니다.', error);
       }
     };
     fetchUserInfo();
