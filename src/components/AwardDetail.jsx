@@ -104,9 +104,9 @@ const AwardDetail = ({ selectedPostId }) => {
         setPostInfo(response.data);
         // setIsScrapped(response.data.is_scrapped);
         setLikeCount(response.data.like_count);
-        setIsLiked(getLikeStatus(selectedPostId));
-        console.log(getLikeStatus(selectedPostId));
-        console.log(response.data);
+        getLikeStatus(selectedPostId);
+
+
       })
       .catch(error => {
         console.log('사용자 정보를 가져오는 중 오류가 발생했습니다.', error);
@@ -115,17 +115,13 @@ const AwardDetail = ({ selectedPostId }) => {
 
   const getLikeStatus = async postId => {
     try {
-      const response = await axios.get(
-        `https://2023-my-awards.com/api/board/${postId}/like_status`,
-        {
-          withCredentials: true,
-        }
-      );
+
 
       console.log("response ", response);
       console.log("response.data ", response.data);
       console.log(" response.data.is_liked ",  response.data.is_liked);
-      return response.data.is_liked;
+      setIsLiked(response.data.is_liked)
+
     } catch (error) {
       console.error('좋아요 상태를 가져오는 중 오류 발생:', error);
       return false; // 에러 발생 시 기본값으로 false를 반환
