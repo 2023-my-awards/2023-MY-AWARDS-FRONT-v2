@@ -144,7 +144,9 @@ const EditProfile = () => {
 
   return (
     <div id="setprofile">
-      <Logo />
+      <div id="logo-wrapper">
+        <Logo />
+      </div>
       <p id="back" onClick={onClickBackButton}>
         &lt;- 마이 페이지로 돌아가기
       </p>
