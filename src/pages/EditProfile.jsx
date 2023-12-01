@@ -164,10 +164,12 @@ const EditProfile = () => {
         />
       </div>
       <p id="notice">한글, 영어, 숫자, 특수문자 사용가능/띄어쓰기 불가</p>
-      <CheckButton
-        onClick={handleCheckButtonClick}
-        isButtonEnabled={isCheckButtonEnabled}
-      />
+      <div id="check-box">
+        <CheckButton
+          onClick={handleCheckButtonClick}
+          isButtonEnabled={isCheckButtonEnabled}
+        />
+      </div>
       <CheckModal show={isModalVisible} isSuccess={isSuccess} />
       <p id="content">프로필 사진을 추가해보세요!</p>
       <div itemID="inputbox">
