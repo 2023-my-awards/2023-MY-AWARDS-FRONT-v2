@@ -120,6 +120,7 @@ textarea::placeholder {
   100% {
     opacity: 1;
     bottom: 0;
+    z-index: 1;
   }
 }
 
@@ -134,6 +135,7 @@ textarea::placeholder {
     opacity: 0;
     bottom: -300px;
     display: none;
+    z-index: -999;
   }
 }
 
