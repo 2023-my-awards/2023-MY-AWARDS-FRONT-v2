@@ -104,7 +104,6 @@ const EditProfile = () => {
 
   const handleStartButtonClick = async () => {
     try {
-      console.log('handleStartButtonClick 호출됨');
       if (inputValue.trim() !== '' && isSuccess) {
         const fileInput = document.getElementById('fileInput');
         const selectedImage = fileInput.files[0];
@@ -122,7 +121,6 @@ const EditProfile = () => {
           });
 
           if (response.data) {
-            console.log('프로필 수정 성공!');
             setIsSuccessModalVisible(true); // 모달 표시 상태를 업데이트합니다.
           } else {
             console.log('프로필 수정 실패:', response.data.message);

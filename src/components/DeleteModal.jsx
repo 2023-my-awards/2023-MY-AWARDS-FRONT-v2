@@ -1,8 +1,8 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import "../css/fonts/font.css";
-import axios from "axios";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import '../css/fonts/font.css';
+import axios from 'axios';
 
 const ModalWrapper = styled.div`
   position: fixed;
@@ -25,8 +25,8 @@ const ModalContent = styled.div`
 `;
 
 const ModalP = styled.p`
-font-family : "CinemaL";
-font-size : 16px;
+  font-family: 'CinemaL';
+  font-size: 16px;
 `;
 
 const ModalBtnDiv = styled.div`
@@ -43,7 +43,7 @@ const DeleteModal = ({ postId, closeModal }) => {
     try {
       const config = {
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         withCredentials: true,
       };
@@ -53,17 +53,16 @@ const DeleteModal = ({ postId, closeModal }) => {
         config
       );
 
-      console.log("삭제 완료:", response.data);
       closeModal();
-      if (window.location.href.includes("myscrap")) {
-          navigate('/mypage');
-      } else if (window.location.href.includes("myaward")) {
+      if (window.location.href.includes('myscrap')) {
+        navigate('/mypage');
+      } else if (window.location.href.includes('myaward')) {
         navigate('/mypage');
       } else {
         window.location.reload(); // Default behavior, reloads the page
       }
     } catch (error) {
-      console.error("삭제 중 오류:", error);
+      console.error('삭제 중 오류:', error);
     }
   };
 
@@ -73,9 +72,9 @@ const DeleteModal = ({ postId, closeModal }) => {
         <ModalContent>
           <ModalP
             style={{
-              fontFamily: "CinemaM",
-              fontSize: "16px",
-              padding: "10px 0px",
+              fontFamily: 'CinemaM',
+              fontSize: '16px',
+              padding: '10px 0px',
             }}
           >
             삭제하시겠습니까?
@@ -85,15 +84,15 @@ const DeleteModal = ({ postId, closeModal }) => {
               type="button"
               value="취소"
               style={{
-                fontFamily: "CinemaM",
-                fontSize: "16px",
-                backgroundColor: "white",
-                padding: "20px 70px",
-                borderTop: "0.001px solid grey",
-                borderRight: "0.001px solid grey",
-                borderLeft: "none",
-                borderBottom: "none",
-                borderBottomLeftRadius: "10px",
+                fontFamily: 'CinemaM',
+                fontSize: '16px',
+                backgroundColor: 'white',
+                padding: '20px 70px',
+                borderTop: '0.001px solid grey',
+                borderRight: '0.001px solid grey',
+                borderLeft: 'none',
+                borderBottom: 'none',
+                borderBottomLeftRadius: '10px',
               }}
               onClick={closeModal}
             />
@@ -101,16 +100,16 @@ const DeleteModal = ({ postId, closeModal }) => {
               type="button"
               value="삭제"
               style={{
-                color: "red",
-                fontFamily: "CinemaM",
-                fontSize: "16px",
-                backgroundColor: "white",
-                padding: "20px 70px",
-                borderTop: "0.001px solid grey",
-                borderRight: "none",
-                borderLeft: "none",
-                borderBottom: "none",
-                borderBottomRightRadius: "10px",
+                color: 'red',
+                fontFamily: 'CinemaM',
+                fontSize: '16px',
+                backgroundColor: 'white',
+                padding: '20px 70px',
+                borderTop: '0.001px solid grey',
+                borderRight: 'none',
+                borderLeft: 'none',
+                borderBottom: 'none',
+                borderBottomRightRadius: '10px',
               }}
               onClick={handleDelete}
             />

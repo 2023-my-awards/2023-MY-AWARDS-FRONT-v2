@@ -110,7 +110,35 @@ textarea::placeholder {
   margin-bottom: 40%;
 }
 
+/* 보이게 */
+@keyframes showElement {
+  0% {
+    opacity: 0;
+    bottom: -300px;
+  }
+
+  100% {
+    opacity: 1;
+    bottom: 0;
+  }
+}
+
+/* 안보이게 */
+@keyframes hideElement {
+  0% {
+    opacity: 1;
+    bottom: 0;
+  }
+
+  100% {
+    opacity: 0;
+    bottom: -300px;
+    display: none;
+  }
+}
+
 #posting_tagbar {
+  display: block;
   display: block;
   position: fixed;
   bottom: -300px;
@@ -120,7 +148,9 @@ textarea::placeholder {
   background-color: #69320a;
   border-top-right-radius: 50px;
   border-top-left-radius: 50px;
-  transition: bottom 0.5s ease;
+  opacity: 0;
+  transition: bottom 0.5s ease, opacity 0.5s ease;
+  animation: hideElement 3s forwards;
 }
 
 @media (min-width: 450px) {
@@ -134,12 +164,17 @@ textarea::placeholder {
 }
 
 #posting_tagbar.visible {
+  display: block;
+  opacity: 1;
   bottom: 0;
+  animation: showElement 1s forwards;
 }
 
 #posting_tagbar.hidden {
-  bottom: -500px;
+  display: block;
+  animation: hideElement 1s forwards;
 }
+
 
 /* CustomFileInputButton  */
 #inputfileimg {
@@ -170,5 +205,15 @@ textarea::placeholder {
 
 #photonotice {
   font-family: "CinemaL";
-  margin-left:15%;
+  margin-left: 15%;
+}
+
+#reset {
+  width: 19px;
+  height: 19px;
+  margin-left: 10px;
+}
+
+#wrapper {
+  display: flex;
 }
