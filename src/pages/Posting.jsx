@@ -290,9 +290,9 @@ const Posting = ({ tagnum }) => {
           <input
             type="text"
             id="input_title"
-            placeholder="제목을 입력해주세요. (최대 20자)"
+            placeholder="제목을 입력해주세요. (최대 25자)"
             value={title}
-            maxLength={20}
+            maxLength={25}
             onChange={handleTitleChange}
           />
           <br />
@@ -303,8 +303,8 @@ const Posting = ({ tagnum }) => {
           <div id="textarea_div">
             <textarea
               id="input_contents"
-              placeholder="내용을 입력해주세요. (최대 300자)"
-              maxLength={300}
+              placeholder="내용을 입력해주세요. (최대 400자)"
+              maxLength={400}
               value={contents}
               onChange={handleContentsChange}
             />
