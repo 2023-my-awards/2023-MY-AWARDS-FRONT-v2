@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import HashTag from "./HashTag";
+import React from 'react';
+import styled from 'styled-components';
+import HashTag from './HashTag';
 
 const TagBarDiv = styled.div`
   width: 100%;
@@ -13,19 +13,18 @@ const TagBarDiv = styled.div`
   justify-content: center;
 `;
 
-const TagBar = (props) => {
+const TagBar = props => {
   function hashtagClick(tagnum) {
     props.handleTagClick(tagnum);
     props.handleTagValue(tagnum);
-    console.log(tagnum);
   }
 
   return (
     <TagBarDiv media>
       <div
         style={{
-          display: "flex",
-          marginTop: "25px",
+          display: 'flex',
+          marginTop: '25px',
         }}
       >
         <HashTag tagnum={1} onClick={() => hashtagClick(1)} />
@@ -35,7 +34,7 @@ const TagBar = (props) => {
       </div>
       <div
         style={{
-          display: "flex",
+          display: 'flex',
         }}
       >
         <HashTag tagnum={5} onClick={() => hashtagClick(5)} />
@@ -45,7 +44,7 @@ const TagBar = (props) => {
       </div>
       <div
         style={{
-          display: "flex",
+          display: 'flex',
         }}
       >
         <HashTag tagnum={9} onClick={() => hashtagClick(9)} />
@@ -54,7 +53,7 @@ const TagBar = (props) => {
       </div>
       <div
         style={{
-          display: "flex",
+          display: 'flex',
         }}
       >
         <HashTag tagnum={12} onClick={() => hashtagClick(12)} />
@@ -64,7 +63,7 @@ const TagBar = (props) => {
       </div>
       <div
         style={{
-          display: "flex",
+          display: 'flex',
         }}
       >
         <HashTag tagnum={16} onClick={() => hashtagClick(16)} />
@@ -73,8 +72,8 @@ const TagBar = (props) => {
       </div>
       <div
         style={{
-          display: "flex",
-          marginBottom: "25px",
+          display: 'flex',
+          marginBottom: '25px',
         }}
       >
         <HashTag tagnum={19} onClick={() => hashtagClick(19)} />

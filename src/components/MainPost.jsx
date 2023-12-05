@@ -120,7 +120,6 @@ const MainPost = ({ selectedTag }) => {
           user: userId,
           post: postId,
         });
-        console.log('좋아요 요청이 성공했습니다.', response);
 
         // 요청 완료 시, 상태 업데이트
         updatedPostStates[index] = {
@@ -146,13 +145,13 @@ const MainPost = ({ selectedTag }) => {
           user: userId,
           post: postId,
         });
-        console.log('좋아요 취소 요청이 성공했습니다.', response);
+
         updatedPostStates[index] = {
           ...updatedPostStates[index],
           likeImage: './images/like_off.png',
           likeCount: response.data.like_count,
         };
-        console.log('좋아요 개수:', response.data.like_count);
+
         setPostStates(updatedPostStates);
 
         // 좋아요 개수를 다시 가져와서 화면에 반영
@@ -186,7 +185,7 @@ const MainPost = ({ selectedTag }) => {
           user: userId,
           post: postId,
         });
-        console.log('스크랩 요청이 성공했습니다.', response);
+
         // 성공적으로 요청이 완료되면 이미지 업데이트
         updatedPostStates[index] = {
           ...updatedPostStates[index],
@@ -198,7 +197,7 @@ const MainPost = ({ selectedTag }) => {
           user: userId,
           post: postId,
         });
-        console.log('스크랩 취소 요청이 성공했습니다.', response);
+
         updatedPostStates[index] = {
           ...updatedPostStates[index],
           ScrapImage: './images/scrap_off.png',
@@ -300,7 +299,6 @@ const MainPost = ({ selectedTag }) => {
           withCredentials: true,
         }
       );
-      console.log('좋아요 개수:', response.data.like_count);
 
       return response.data.like_count;
     } catch (error) {
@@ -334,7 +332,7 @@ const MainPost = ({ selectedTag }) => {
           }))
         );
         setCategory(response.data.category);
-        console.log('버튼 눌림');
+
         // console.log(response.data);
 
         // 각 게시물에 대한 좋아요, 스크랩 상태를 가져와서 업데이트

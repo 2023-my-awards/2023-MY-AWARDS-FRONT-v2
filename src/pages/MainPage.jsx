@@ -41,7 +41,6 @@ function MainPage({ tagnum }) {
   };
 
   const handleTagClick = tagnum => {
-    console.log(tagnum);
     setSelectedTag(tagnum);
   };
 
@@ -118,7 +117,6 @@ function MainPage({ tagnum }) {
         break;
     }
     setSelectedValue(value);
-    console.log(value);
   };
 
   return (

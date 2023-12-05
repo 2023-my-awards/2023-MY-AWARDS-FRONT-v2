@@ -27,7 +27,6 @@ const CheckButton = ({ isButtonEnabled, onClick, inputValue }) => {
       });
 
       // 서버 응답에 대한 로직 추가 (예: 중복확인 성공 여부에 따른 처리)
-      console.log(response.data);
     } catch (error) {
       // 에러 처리
       console.error(error);

@@ -113,7 +113,6 @@ const SetProfile = () => {
         });
 
         if (response.data) {
-          console.log('회원가입 성공!');
           // 여기에서 추가적인 작업 수행 (예: 로그인 처리 등)
 
           // 회원가입 성공 시 api/board로 이동

@@ -116,6 +116,7 @@ textarea::placeholder {
     opacity: 0;
     bottom: -300px;
   }
+
   100% {
     opacity: 1;
     bottom: 0;
@@ -128,6 +129,7 @@ textarea::placeholder {
     opacity: 1;
     bottom: 0;
   }
+
   100% {
     opacity: 0;
     bottom: -300px;
@@ -135,7 +137,8 @@ textarea::placeholder {
   }
 }
 
-#posting_tagbar {  display: block;
+#posting_tagbar {
+  display: block;
   display: block;
   position: fixed;
   bottom: -300px;
@@ -167,7 +170,8 @@ textarea::placeholder {
   animation: showElement 1s forwards;
 }
 
-#posting_tagbar.hidden {  display: block;
+#posting_tagbar.hidden {
+  display: block;
   animation: hideElement 1s forwards;
 }
 
@@ -201,5 +205,15 @@ textarea::placeholder {
 
 #photonotice {
   font-family: "CinemaL";
-  margin-left:15%;
+  margin-left: 15%;
+}
+
+#reset {
+  width: 19px;
+  height: 19px;
+  margin-left: 10px;
+}
+
+#wrapper {
+  display: flex;
 }

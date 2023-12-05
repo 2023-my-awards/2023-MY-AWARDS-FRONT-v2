@@ -66,7 +66,6 @@ const ScrapList = () => {
   const [postId, setPostId] = useState(null);
 
   const handleListClick = scrapId => {
-    console.log('클릭한 요소의 scrap.id:', scrapId);
     window.location = `/myscrap/${scrapId}`;
   };
 

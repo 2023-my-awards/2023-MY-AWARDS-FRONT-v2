@@ -90,7 +90,7 @@ const AwardDetail = ({ selectedPostId }) => {
   const [userInfo, setUserInfo] = useState([]);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteModalPostId, setDeleteModalPostId] = useState(null);
-  const [likeCount, setLikeCount] = useState(0) 
+  const [likeCount, setLikeCount] = useState(0);
 
   const handleDeleteClick = postId => {
     setDeleteModalPostId(postId);
@@ -103,7 +103,6 @@ const AwardDetail = ({ selectedPostId }) => {
       try {
         getLikeStatus(selectedPostId);
         getScrapStatus(selectedPostId);
-
       } catch (error) {
         console.log('좋아요 상태를 가져오는 중 오류 발생:', error);
       }
@@ -112,7 +111,6 @@ const AwardDetail = ({ selectedPostId }) => {
     fetchLikeStatus(); // getLikeStatus 호출
   }, [selectedPostId]); // selectedPostId가 바뀔 때마다 호출
 
-
   useEffect(() => {
     axios
       .get(`https://2023-my-awards.com/api/board/${selectedPostId}`)
@@ -120,7 +118,6 @@ const AwardDetail = ({ selectedPostId }) => {
         setPostInfo(response.data);
         // setIsScrapped(response.data.is_scrapped);
         setLikeCount(response.data.like_count);
-
       })
 
       .catch(error => {
@@ -138,15 +135,14 @@ const AwardDetail = ({ selectedPostId }) => {
         }
       );
 
-      setIsLiked(response.data.is_liked)
-
+      setIsLiked(response.data.is_liked);
     } catch (error) {
       console.error('좋아요 상태를 가져오는 중 오류 발생:', error);
       return false; // 에러 발생 시 기본값으로 false를 반환
     }
   };
 
-  // 스크랩 여부 
+  // 스크랩 여부
   const getScrapStatus = async postId => {
     try {
       const response = await axios.get(
@@ -156,8 +152,7 @@ const AwardDetail = ({ selectedPostId }) => {
         }
       );
 
-      setIsScrapped(response.data.is_scrapped)
-
+      setIsScrapped(response.data.is_scrapped);
     } catch (error) {
       console.error('스크랩 상태를 가져오는 중 오류 발생:', error);
       return false; // 에러 발생 시 기본값으로 false를 반환
@@ -172,8 +167,6 @@ const AwardDetail = ({ selectedPostId }) => {
         post: selectedPostId,
       });
 
-      console.log("클릭! ", isLiked);
-
       if (!isLiked) {
         setLikeCount(likeCount + 1);
       } else {
@@ -181,7 +174,6 @@ const AwardDetail = ({ selectedPostId }) => {
       }
 
       setIsLiked(!isLiked);
-      console.log(`Like status updated: ${isLiked ? 'unliked' : 'liked'}`, response);
     } catch (error) {
       console.log('Error while updating like status:', error);
       // Handle errors accordingly (e.g., show a notification to the user)
@@ -197,7 +189,6 @@ const AwardDetail = ({ selectedPostId }) => {
       });
 
       setIsScrapped(!isScrapped);
-      console.log(`Scrap status updated: ${isScrapped ? 'unScrap' : 'Scrap'}`, response);
     } catch (error) {
       console.log('Error while updating like status:', error);
       // Handle errors accordingly (e.g., show a notification to the user)
@@ -215,8 +206,6 @@ const AwardDetail = ({ selectedPostId }) => {
     };
     fetchUserInfo();
   }, []);
-
-
 
   // useEffect(() => {
   //   setPostInfo({
