@@ -87,6 +87,7 @@ input[type="text"]::placeholder {
   width: 70%;
   resize: none;
   position: relative;
+  height: 170px;
 }
 
 textarea::placeholder {
